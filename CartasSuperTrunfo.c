@@ -1,77 +1,81 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 
-// Teste Priscilla Piloto
-// Definição da estrutura para armazenar as informações da cidade
+// Definição da estrutura para armazenar os dados da carta
 typedef struct {
     char estado;
-    char codigo[4]; // Código da carta, como A01, A02, B01, B02, etc.
-    char nome[100];
+    char codigo[4];
+    char nomeCidade[50];
     int populacao;
     float area;
     float pib;
-    int pontos_turisticos;
-} Cidade;
+    int pontosTuristicos;
+} Carta;
 
-// Função para exibir os dados cadastrados de forma organizada
-void exibir_dados(Cidade cidade) {
-    printf("\nCidade Cadastrada:\n");
-    printf("Estado: %c\n", cidade.estado);
-    printf("Código da Carta: %s\n", cidade.codigo);
-    printf("Nome da Cidade: %s\n", cidade.nome);
-    printf("População: %d\n", cidade.populacao);
-    printf("Área: %.2f km²\n", cidade.area);
-    printf("PIB: %.2f\n", cidade.pib);
-    printf("Número de Pontos Turísticos: %d\n", cidade.pontos_turisticos);
-    printf("\nCadastro realizado com sucesso!\n");
-}
-
-// Função para cadastrar uma cidade
-void cadastrar_cidade() {
-    Cidade cidade;
-
-    // Entrada de dados
-    printf("Digite o estado (letra A a H): ");
-    scanf(" %c", &cidade.estado); // Espaço antes de %c para capturar corretamente a primeira letra
-    printf("Digite o código da carta (exemplo: A01, A02, B01, ...): ");
-    scanf("%s", cidade.codigo);
-    printf("Digite o nome da cidade: ");
-    scanf(" %[^\n]s", cidade.nome); // Lê o nome da cidade com espaços
-    printf("Digite a população da cidade: ");
-    scanf("%d", &cidade.populacao);
-    printf("Digite a área da cidade (em km²): ");
-    scanf("%f", &cidade.area);
-    printf("Digite o PIB da cidade: ");
-    scanf("%f", &cidade.pib);
-    printf("Digite o número de pontos turísticos da cidade: ");
-    scanf("%d", &cidade.pontos_turisticos);
-
-    // Exibe os dados cadastrados
-    exibir_dados(cidade);
-}
-
-// Função principal do sistema
 int main() {
-    char opcao;
+    Carta carta1, carta2;
+    
+    // Coletando dados da primeira carta
+    printf("Digite o estado da primeira carta: ");
+    scanf(" %c", &carta1.estado);
+    
+    printf("Digite o código da primeira carta: ");
+    scanf("%s", carta1.codigo);
+    
+    printf("Digite o nome da cidade da primeira carta: ");
+    scanf(" %49[^"]", carta1.nomeCidade);
+    
+    printf("Digite a população da primeira carta: ");
+    scanf("%d", &carta1.populacao);
+    
+    printf("Digite a área da primeira carta (em km²): ");
+    scanf("%f", &carta1.area);
+    
+    printf("Digite o PIB da primeira carta (em bilhões de reais): ");
+    scanf("%f", &carta1.pib);
+    
+    printf("Digite o número de pontos turísticos da primeira carta: ");
+    scanf("%d", &carta1.pontosTuristicos);
 
-    printf("Bem-vindo ao sistema de cadastro de cartas de cidades!\n");
+    // Coletando dados da segunda carta
+    printf("\nDigite o estado da segunda carta: ");
+    scanf(" %c", &carta2.estado);
+    
+    printf("Digite o código da segunda carta: ");
+    scanf("%s", carta2.codigo);
+    
+    printf("Digite o nome da cidade da segunda carta: ");
+    scanf(" %49[^"]", carta2.nomeCidade);
+    
+    printf("Digite a população da segunda carta: ");
+    scanf("%d", &carta2.populacao);
+    
+    printf("Digite a área da segunda carta (em km²): ");
+    scanf("%f", &carta2.area);
+    
+    printf("Digite o PIB da segunda carta (em bilhões de reais): ");
+    scanf("%f", &carta2.pib);
+    
+    printf("Digite o número de pontos turísticos da segunda carta: ");
+    scanf("%d", &carta2.pontosTuristicos);
 
-    // Loop para cadastrar várias cidades
-    do {
-        printf("\nDeseja cadastrar uma nova cidade? (S para sim, N para não): ");
-        scanf(" %c", &opcao);
+    // Exibindo os dados coletados
+    printf("\nCarta 1:\n");
+    printf("Estado: %c\n", carta1.estado);
+    printf("Código: %s\n", carta1.codigo);
+    printf("Nome da Cidade: %s\n", carta1.nomeCidade);
+    printf("População: %d\n", carta1.populacao);
+    printf("Área: %.2f km²\n", carta1.area);
+    printf("PIB: %.2f bilhões de reais\n", carta1.pib);
+    printf("Número de Pontos Turísticos: %d\n", carta1.pontosTuristicos);
 
-        if (opcao == 'S' || opcao == 's') {
-            cadastrar_cidade();
-        } else if (opcao == 'N' || opcao == 'n') {
-            printf("Saindo do sistema.\n");
-            break;
-        } else {
-            printf("Resposta inválida. Por favor, digite 'S' para sim ou 'N' para não.\n");
-        }
-
-    } while (1);
-
+    printf("\nCarta 2:\n");
+    printf("Estado: %c\n", carta2.estado);
+    printf("Código: %s\n", carta2.codigo);
+    printf("Nome da Cidade: %s\n", carta2.nomeCidade);
+    printf("População: %d\n", carta2.populacao);
+    printf("Área: %.2f km²\n", carta2.area);
+    printf("PIB: %.2f bilhões de reais\n", carta2.pib);
+    printf("Número de Pontos Turísticos: %d\n", carta2.pontosTuristicos);
+    
     return 0;
 }
